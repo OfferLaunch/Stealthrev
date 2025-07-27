@@ -4,6 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
+/* Ensure styles load in static export */
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -11,6 +12,8 @@
   
   body {
     font-family: 'Inter', system-ui, sans-serif;
+    background-color: #020617; /* dark-950 */
+    color: white;
   }
 }
 
