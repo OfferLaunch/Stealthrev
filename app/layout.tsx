@@ -121,40 +121,61 @@ export default function RootLayout({
           __html: `
             // NUCLEAR FALLBACK - Force visibility on ALL elements
             function nuclearFallback() {
-              // Override ALL elements
-              const allElements = document.querySelectorAll('*');
-              allElements.forEach(el => {
-                el.style.opacity = '1';
-                el.style.visibility = 'visible';
-                el.style.transform = 'none';
-                el.style.display = el.style.display || 'block';
-              });
-              
-              // Force specific elements that might be hidden
-              const sections = document.querySelectorAll('section, div, header, footer');
-              sections.forEach(el => {
-                el.style.opacity = '1';
-                el.style.visibility = 'visible';
-                el.style.transform = 'none';
-              });
+              try {
+                // Override ALL elements
+                const allElements = document.querySelectorAll('*');
+                allElements.forEach(el => {
+                  el.style.opacity = '1';
+                  el.style.visibility = 'visible';
+                  el.style.transform = 'none';
+                  el.style.display = el.style.display || 'block';
+                });
+                
+                // Force specific elements that might be hidden
+                const sections = document.querySelectorAll('section, div, header, footer');
+                sections.forEach(el => {
+                  el.style.opacity = '1';
+                  el.style.visibility = 'visible';
+                  el.style.transform = 'none';
+                });
+              } catch (error) {
+                console.log('Nuclear fallback error:', error);
+              }
             }
             
-            // Run immediately and continuously
-            nuclearFallback();
-            setTimeout(nuclearFallback, 50);
-            setTimeout(nuclearFallback, 100);
-            setTimeout(nuclearFallback, 200);
-            setTimeout(nuclearFallback, 500);
-            setTimeout(nuclearFallback, 1000);
+            // Wait for DOM to be ready
+            function initNuclearFallback() {
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', nuclearFallback);
+              } else {
+                nuclearFallback();
+              }
+              
+              // Run immediately and continuously
+              setTimeout(nuclearFallback, 50);
+              setTimeout(nuclearFallback, 100);
+              setTimeout(nuclearFallback, 200);
+              setTimeout(nuclearFallback, 500);
+              setTimeout(nuclearFallback, 1000);
+              
+              // Also run on DOM changes (with proper error handling)
+              try {
+                if (document.body) {
+                  const observer = new MutationObserver(nuclearFallback);
+                  observer.observe(document.body, { 
+                    childList: true, 
+                    subtree: true, 
+                    attributes: true,
+                    attributeFilter: ['style']
+                  });
+                }
+              } catch (error) {
+                console.log('Observer error:', error);
+              }
+            }
             
-            // Also run on DOM changes
-            const observer = new MutationObserver(nuclearFallback);
-            observer.observe(document.body, { 
-              childList: true, 
-              subtree: true, 
-              attributes: true,
-              attributeFilter: ['style']
-            });
+            // Initialize when script loads
+            initNuclearFallback();
           `
         }} />
       </head>
