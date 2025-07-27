@@ -79,52 +79,82 @@ export default function RootLayout({
               padding: 32px !important;
               border: 1px solid #1e293b !important;
             }
+            
+            /* NUCLEAR FALLBACK - Override ALL Framer Motion styles */
+            * { 
+              opacity: 1 !important; 
+              visibility: visible !important; 
+              transform: none !important; 
+            }
+            
             /* Animation fallbacks for static export */
             .animate-fade-in { animation: fadeIn 0.5s ease-in-out; }
             .animate-slide-up { animation: slideUp 0.5s ease-out; }
             @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
             @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-            /* Force visibility for static export - CRITICAL */
+            
+            /* Force ALL elements to be visible regardless of inline styles */
             [style*="opacity: 0"] { opacity: 1 !important; }
             [style*="transform: translateY(20px)"] { transform: none !important; }
             [style*="transform: translateY(30px)"] { transform: none !important; }
             [style*="transform: translateX(-20px)"] { transform: none !important; }
             [style*="transform: translateX(20px)"] { transform: none !important; }
+            [style*="transform: translateX(-50px)"] { transform: none !important; }
+            [style*="transform: translateX(50px)"] { transform: none !important; }
+            [style*="translateZ(0)"] { transform: none !important; }
+            
             /* Ensure all motion elements are visible */
             [data-framer-motion] { opacity: 1 !important; transform: none !important; }
+            
             /* Force all content to be visible */
-            main * { opacity: 1 !important; visibility: visible !important; }
+            main * { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+            
+            /* Override any remaining hidden elements */
+            div, section, header, footer, p, h1, h2, h3, h4, h5, h6, span, a, button, form, input, textarea, ul, li {
+              opacity: 1 !important;
+              visibility: visible !important;
+              transform: none !important;
+            }
           `
         }} />
         <script dangerouslySetInnerHTML={{
           __html: `
-            // Aggressive fallback for static export
-            function forceVisibility() {
-              // Force all elements to be visible
+            // NUCLEAR FALLBACK - Force visibility on ALL elements
+            function nuclearFallback() {
+              // Override ALL elements
               const allElements = document.querySelectorAll('*');
               allElements.forEach(el => {
-                const style = window.getComputedStyle(el);
-                if (style.opacity === '0' || style.visibility === 'hidden') {
-                  el.style.opacity = '1';
-                  el.style.visibility = 'visible';
-                  el.style.transform = 'none';
-                }
+                el.style.opacity = '1';
+                el.style.visibility = 'visible';
+                el.style.transform = 'none';
+                el.style.display = el.style.display || 'block';
               });
               
-              // Force motion elements
-              const motionElements = document.querySelectorAll('[data-framer-motion]');
-              motionElements.forEach(el => {
+              // Force specific elements that might be hidden
+              const sections = document.querySelectorAll('section, div, header, footer');
+              sections.forEach(el => {
                 el.style.opacity = '1';
-                el.style.transform = 'none';
                 el.style.visibility = 'visible';
+                el.style.transform = 'none';
               });
             }
             
-            // Run immediately and after a delay
-            forceVisibility();
-            setTimeout(forceVisibility, 100);
-            setTimeout(forceVisibility, 500);
-            setTimeout(forceVisibility, 1000);
+            // Run immediately and continuously
+            nuclearFallback();
+            setTimeout(nuclearFallback, 50);
+            setTimeout(nuclearFallback, 100);
+            setTimeout(nuclearFallback, 200);
+            setTimeout(nuclearFallback, 500);
+            setTimeout(nuclearFallback, 1000);
+            
+            // Also run on DOM changes
+            const observer = new MutationObserver(nuclearFallback);
+            observer.observe(document.body, { 
+              childList: true, 
+              subtree: true, 
+              attributes: true,
+              attributeFilter: ['style']
+            });
           `
         }} />
       </head>
