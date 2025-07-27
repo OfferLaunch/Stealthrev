@@ -11,11 +11,6 @@ import Footer from '../components/Footer'
 export default function Home() {
   return (
     <main className="min-h-screen">
-      {/* Test div to see if page is rendering */}
-      <div className="bg-red-500 text-white p-4 text-center">
-        TEST: Page is loading - if you see this, the page is working
-      </div>
-      
       <Header />
       <Hero />
       <Features />
