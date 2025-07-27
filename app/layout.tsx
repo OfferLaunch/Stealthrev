@@ -84,20 +84,47 @@ export default function RootLayout({
             .animate-slide-up { animation: slideUp 0.5s ease-out; }
             @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
             @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-            /* Force visibility for static export */
+            /* Force visibility for static export - CRITICAL */
+            [style*="opacity: 0"] { opacity: 1 !important; }
+            [style*="transform: translateY(20px)"] { transform: none !important; }
+            [style*="transform: translateY(30px)"] { transform: none !important; }
+            [style*="transform: translateX(-20px)"] { transform: none !important; }
+            [style*="transform: translateX(20px)"] { transform: none !important; }
+            /* Ensure all motion elements are visible */
             [data-framer-motion] { opacity: 1 !important; transform: none !important; }
+            /* Force all content to be visible */
+            main * { opacity: 1 !important; visibility: visible !important; }
           `
         }} />
         <script dangerouslySetInnerHTML={{
           __html: `
-            // Force animations to show in static export
-            setTimeout(() => {
+            // Aggressive fallback for static export
+            function forceVisibility() {
+              // Force all elements to be visible
+              const allElements = document.querySelectorAll('*');
+              allElements.forEach(el => {
+                const style = window.getComputedStyle(el);
+                if (style.opacity === '0' || style.visibility === 'hidden') {
+                  el.style.opacity = '1';
+                  el.style.visibility = 'visible';
+                  el.style.transform = 'none';
+                }
+              });
+              
+              // Force motion elements
               const motionElements = document.querySelectorAll('[data-framer-motion]');
               motionElements.forEach(el => {
                 el.style.opacity = '1';
                 el.style.transform = 'none';
+                el.style.visibility = 'visible';
               });
-            }, 100);
+            }
+            
+            // Run immediately and after a delay
+            forceVisibility();
+            setTimeout(forceVisibility, 100);
+            setTimeout(forceVisibility, 500);
+            setTimeout(forceVisibility, 1000);
           `
         }} />
       </head>
