@@ -115,6 +115,19 @@ export default function RootLayout({
               visibility: visible !important;
               transform: none !important;
             }
+            
+            /* HIDE SWEETALERT CSS THAT APPEARS AS TEXT */
+            body > *:first-child:not(main):not(header):not(footer):not(section) {
+              display: none !important;
+            }
+            
+            /* Hide any CSS that appears as text */
+            body > text:first-child,
+            body > *:first-child:not(main):not(header):not(footer):not(section):not(div):not(script):not(style) {
+              display: none !important;
+              visibility: hidden !important;
+              opacity: 0 !important;
+            }
           `
         }} />
         <script dangerouslySetInnerHTML={{
@@ -138,6 +151,19 @@ export default function RootLayout({
                   el.style.visibility = 'visible';
                   el.style.transform = 'none';
                 });
+                
+                // Hide any SweetAlert CSS that appears as text
+                const bodyChildren = document.body.children;
+                for (let i = 0; i < bodyChildren.length; i++) {
+                  const child = bodyChildren[i];
+                  if (child.tagName !== 'MAIN' && child.tagName !== 'HEADER' && child.tagName !== 'FOOTER' && child.tagName !== 'SECTION' && child.tagName !== 'SCRIPT' && child.tagName !== 'STYLE') {
+                    if (child.textContent && child.textContent.includes('.swal-')) {
+                      child.style.display = 'none';
+                      child.style.visibility = 'hidden';
+                      child.style.opacity = '0';
+                    }
+                  }
+                }
               } catch (error) {
                 console.log('Nuclear fallback error:', error);
               }
