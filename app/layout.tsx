@@ -79,6 +79,25 @@ export default function RootLayout({
               padding: 32px !important;
               border: 1px solid #1e293b !important;
             }
+            /* Animation fallbacks for static export */
+            .animate-fade-in { animation: fadeIn 0.5s ease-in-out; }
+            .animate-slide-up { animation: slideUp 0.5s ease-out; }
+            @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+            @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+            /* Force visibility for static export */
+            [data-framer-motion] { opacity: 1 !important; transform: none !important; }
+          `
+        }} />
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            // Force animations to show in static export
+            setTimeout(() => {
+              const motionElements = document.querySelectorAll('[data-framer-motion]');
+              motionElements.forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+              });
+            }, 100);
           `
         }} />
       </head>

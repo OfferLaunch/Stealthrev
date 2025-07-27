@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
 
 const Header = () => {
@@ -20,14 +21,19 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex-shrink-0 animate-slide-up"
+          >
             <a href="#home" className="flex items-center">
               <div className="w-8 h-8 bg-gradient-to-br from-primary-600 to-accent-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">SR</span>
               </div>
               <span className="ml-2 text-xl font-bold text-white">Stealth Rev</span>
             </a>
-          </div>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
@@ -42,7 +48,12 @@ const Header = () => {
                     <span>{item.name}</span>
                     <ChevronDown className="w-4 h-4" />
                     {isSolutionsOpen && (
-                      <div className="absolute top-full left-0 mt-2 w-48 bg-dark-900 rounded-lg shadow-lg border border-dark-700 py-2">
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full left-0 mt-2 w-48 bg-dark-900 rounded-lg shadow-lg border border-dark-700 py-2"
+                      >
                         <a href="#cloud" className="block px-4 py-2 text-sm text-gray-300 hover:bg-dark-800">
                           Cloud Solutions
                         </a>
@@ -52,7 +63,7 @@ const Header = () => {
                         <a href="#security" className="block px-4 py-2 text-sm text-gray-300 hover:bg-dark-800">
                           Cybersecurity
                         </a>
-                      </div>
+                      </motion.div>
                     )}
                   </div>
                 ) : (
@@ -68,11 +79,16 @@ const Header = () => {
           </nav>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="hidden md:block animate-slide-up"
+          >
             <a href="#contact" className="btn-primary">
               Get Started
             </a>
-          </div>
+          </motion.div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -87,7 +103,12 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden">
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden"
+          >
             <div className="px-2 pt-2 pb-3 space-y-1 bg-dark-900 border-t border-dark-700">
               {navigation.map((item) => (
                 <a
@@ -105,7 +126,7 @@ const Header = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
     </header>
