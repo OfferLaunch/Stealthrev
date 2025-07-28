@@ -22,10 +22,10 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 1, x: 0 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex-shrink-0 animate-slide-up"
+            className="flex-shrink-0"
           >
             <a href="#home" className="flex items-center">
               <div className="w-8 h-8 bg-gradient-to-br from-primary-600 to-accent-600 rounded-lg flex items-center justify-center">
@@ -49,7 +49,7 @@ const Header = () => {
                     <ChevronDown className="w-4 h-4" />
                     {isSolutionsOpen && (
                       <motion.div
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 1, y: 0 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         className="absolute top-full left-0 mt-2 w-48 bg-dark-900 rounded-lg shadow-lg border border-dark-700 py-2"
@@ -80,10 +80,10 @@ const Header = () => {
 
           {/* CTA Button */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 1, x: 0 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="hidden md:block animate-slide-up"
+            className="hidden md:block"
           >
             <a href="#contact" className="btn-primary">
               Get Started
@@ -104,7 +104,7 @@ const Header = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 1, height: 'auto' }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden"

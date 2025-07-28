@@ -2,60 +2,60 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Cloud, Brain, Shield, Database, Globe, Zap } from 'lucide-react'
+import { Target, Users, TrendingUp, Shield, Zap, BarChart3 } from 'lucide-react'
 
 const Services = () => {
-     const services = [
-     {
-       icon: Cloud,
-       title: 'B2B Lead Generation',
-       description: 'High-quality business leads for B2B companies and service providers.',
-       features: ['Pre-qualified prospects', 'Custom targeting', 'Real-time delivery'],
-       color: 'from-red-500 to-red-600',
-     },
-     {
-       icon: Brain,
-       title: 'AI-Powered Targeting',
-       description: 'Advanced AI algorithms to identify and reach your ideal prospects.',
-       features: ['Behavioral analysis', 'Predictive scoring', 'Smart segmentation'],
-       color: 'from-purple-500 to-purple-600',
-     },
-     {
-       icon: Shield,
-       title: 'Lead Verification',
-       description: 'Multi-step verification process to ensure lead quality and authenticity.',
-       features: ['Phone verification', 'Email validation', 'Intent confirmation'],
-       color: 'from-red-500 to-red-600',
-     },
-     {
-       icon: Database,
-       title: 'CRM Integration',
-       description: 'Seamless integration with your existing CRM and marketing tools.',
-       features: ['Salesforce ready', 'HubSpot compatible', 'Custom webhooks'],
-       color: 'from-green-500 to-green-600',
-     },
-     {
-       icon: Globe,
-       title: 'Multi-Channel Campaigns',
-       description: 'Reach prospects across multiple channels for maximum exposure.',
-       features: ['Email campaigns', 'Social media', 'Display advertising'],
-       color: 'from-indigo-500 to-indigo-600',
-     },
-     {
-       icon: Zap,
-       title: 'Performance Analytics',
-       description: 'Comprehensive reporting and analytics to track your ROI.',
-       features: ['Conversion tracking', 'ROI analysis', 'Campaign optimization'],
-       color: 'from-yellow-500 to-orange-500',
-     },
-   ]
+  const services = [
+    {
+      title: 'B2B Lead Generation',
+      description: 'High-quality business-to-business leads delivered directly to your CRM with full contact information and qualification criteria.',
+      icon: Target,
+      color: 'from-blue-600 to-blue-700',
+      features: ['Pre-qualified prospects', 'Full contact details', 'Industry targeting', 'Real-time delivery']
+    },
+    {
+      title: 'Appointment Setting',
+      description: 'We schedule qualified meetings with decision-makers who are ready to discuss your products or services.',
+      icon: Users,
+      color: 'from-green-600 to-green-700',
+      features: ['Calendar integration', 'Meeting confirmations', 'Follow-up scheduling', 'CRM sync']
+    },
+    {
+      title: 'Lead Nurturing',
+      description: 'Multi-touch campaigns that keep prospects engaged until they\'re ready to convert into customers.',
+      icon: TrendingUp,
+      color: 'from-purple-600 to-purple-700',
+      features: ['Email sequences', 'Content marketing', 'Social engagement', 'Conversion tracking']
+    },
+    {
+      title: 'Lead Verification',
+      description: 'Advanced verification systems ensure every lead meets your exact criteria and has genuine interest.',
+      icon: Shield,
+      color: 'from-red-600 to-red-700',
+      features: ['Phone verification', 'Email validation', 'Company verification', 'Interest confirmation']
+    },
+    {
+      title: 'Performance Tracking',
+      description: 'Real-time analytics and reporting to track lead quality, conversion rates, and ROI metrics.',
+      icon: BarChart3,
+      color: 'from-orange-600 to-orange-700',
+      features: ['Conversion tracking', 'ROI reporting', 'Lead scoring', 'Performance dashboards']
+    },
+    {
+      title: 'Custom Solutions',
+      description: 'Tailored lead generation strategies designed specifically for your industry and target market.',
+      icon: Zap,
+      color: 'from-indigo-600 to-indigo-700',
+      features: ['Industry expertise', 'Custom targeting', 'Dedicated team', 'Flexible pricing']
+    }
+  ]
 
   return (
          <section id="services" className="py-20 bg-dark-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
@@ -76,7 +76,7 @@ const Services = () => {
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
@@ -105,7 +105,7 @@ const Services = () => {
 
         {/* Bottom CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
