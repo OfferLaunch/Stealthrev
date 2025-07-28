@@ -107,18 +107,33 @@ const Contact = () => {
                  />
                </div>
              </div>
-             <div>
-               <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
-                 Company
-               </label>
-               <input
-                 type="text"
-                 id="company"
-                 name="company"
-                 className="w-full px-4 py-3 border border-dark-700 bg-dark-900 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
-                 placeholder="Your Company"
-                 disabled={isSubmitting}
-               />
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+               <div>
+                 <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
+                   Company
+                 </label>
+                 <input
+                   type="text"
+                   id="company"
+                   name="company"
+                   className="w-full px-4 py-3 border border-dark-700 bg-dark-900 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
+                   placeholder="Your Company"
+                   disabled={isSubmitting}
+                 />
+               </div>
+               <div>
+                 <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
+                   Phone Number
+                 </label>
+                 <input
+                   type="tel"
+                   id="phone"
+                   name="phone"
+                   className="w-full px-4 py-3 border border-dark-700 bg-dark-900 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
+                   placeholder="(555) 123-4567"
+                   disabled={isSubmitting}
+                 />
+               </div>
              </div>
              <div>
                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
