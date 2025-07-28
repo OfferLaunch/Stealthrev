@@ -37,7 +37,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Linkedin, href: '#', label: 'LinkedIn' },
     { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Facebook, href: '#', label: 'Facebook' },
+    { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61573990739885', label: 'Facebook' },
     { icon: Instagram, href: '#', label: 'Instagram' },
   ]
 
@@ -68,15 +68,15 @@ const Footer = () => {
               <div className="space-y-3">
                 <div className="flex items-center text-gray-400">
                   <Mail className="w-4 h-4 mr-3" />
-                  <span>hello@stealthrev.com</span>
+                  <span>info@stealthrev.co</span>
                 </div>
                 <div className="flex items-center text-gray-400">
                   <Phone className="w-4 h-4 mr-3" />
-                  <span>+1 (555) 123-4567</span>
+                  <span>(786) 509-9198</span>
                 </div>
                 <div className="flex items-center text-gray-400">
                   <MapPin className="w-4 h-4 mr-3" />
-                  <span>San Francisco, CA</span>
+                  <span>163 NE 24th Street, Miami, FL 33137</span>
                 </div>
               </div>
             </motion.div>
@@ -157,6 +157,8 @@ const Footer = () => {
                  <a
                    key={social.label}
                    href={social.href}
+                   target="_blank"
+                   rel="noopener noreferrer"
                    className="w-10 h-10 bg-dark-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors"
                    aria-label={social.label}
                  >

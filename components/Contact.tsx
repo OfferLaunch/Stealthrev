@@ -1,28 +1,50 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: '',
-  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const formRef = useRef<HTMLFormElement>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
-  }
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+    const formData = new FormData(e.currentTarget)
+    
+    try {
+      const response = await fetch('https://formspree.io/f/mkgzbvyy', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json',
+        },
+      })
+
+      console.log('Response status:', response.status)
+      console.log('Response ok:', response.ok)
+      console.log('Response statusText:', response.statusText)
+
+      // Formspree returns 200 for successful submissions
+      if (response.status === 200 || response.status === 302 || response.ok) {
+        setSubmitStatus('success')
+        if (formRef.current) {
+          formRef.current.reset()
+        }
+      } else {
+        console.error('Form submission failed:', response.status, response.statusText)
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -30,7 +52,7 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
@@ -49,12 +71,12 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 1, x: 0 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
@@ -64,11 +86,10 @@ const Contact = () => {
                    type="text"
                    id="name"
                    name="name"
-                   value={formData.name}
-                   onChange={handleChange}
                    className="w-full px-4 py-3 border border-dark-700 bg-dark-900 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
                    placeholder="John Doe"
                    required
+                   disabled={isSubmitting}
                  />
                </div>
                <div>
@@ -79,11 +100,10 @@ const Contact = () => {
                    type="email"
                    id="email"
                    name="email"
-                   value={formData.email}
-                   onChange={handleChange}
                    className="w-full px-4 py-3 border border-dark-700 bg-dark-900 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
                    placeholder="john@company.com"
                    required
+                   disabled={isSubmitting}
                  />
                </div>
              </div>
@@ -95,10 +115,9 @@ const Contact = () => {
                  type="text"
                  id="company"
                  name="company"
-                 value={formData.company}
-                 onChange={handleChange}
                  className="w-full px-4 py-3 border border-dark-700 bg-dark-900 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
                  placeholder="Your Company"
+                 disabled={isSubmitting}
                />
              </div>
              <div>
@@ -108,27 +127,43 @@ const Contact = () => {
                <textarea
                  id="message"
                  name="message"
-                 value={formData.message}
-                 onChange={handleChange}
                  rows={6}
                  className="w-full px-4 py-3 border border-dark-700 bg-dark-900 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors resize-none"
                  placeholder="Tell us about your project..."
                  required
+                 disabled={isSubmitting}
                />
               </div>
-              <button
-                type="submit"
-                className="btn-primary w-full group"
-              >
-                Send Message
-                <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </button>
+
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <div className="bg-green-900/20 border border-green-600 text-green-400 px-4 py-3 rounded-lg">
+                  Thank you! Your message has been sent successfully. We'll get back to you soon.
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="bg-red-900/20 border border-red-600 text-red-400 px-4 py-3 rounded-lg">
+                  Sorry, there was an error sending your message. Please try again or contact us directly at info@stealthrev.co
+                </div>
+              )}
+
+              <div className="flex justify-end">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="bg-primary-600 hover:bg-primary-700 disabled:bg-gray-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 flex items-center disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
             </form>
           </motion.div>
 
           {/* Contact Information */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 1, x: 0 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
@@ -151,7 +186,7 @@ const Contact = () => {
                  </div>
                  <div>
                    <h4 className="font-semibold text-white mb-1">Email</h4>
-                   <p className="text-gray-400">hello@stealthrev.com</p>
+                   <p className="text-gray-400">info@stealthrev.co</p>
                  </div>
                </div>
 
@@ -161,7 +196,7 @@ const Contact = () => {
                  </div>
                  <div>
                    <h4 className="font-semibold text-white mb-1">Phone</h4>
-                   <p className="text-gray-400">+1 (555) 123-4567</p>
+                   <p className="text-gray-400">(786) 509-9198</p>
                  </div>
                </div>
 
@@ -172,8 +207,8 @@ const Contact = () => {
                  <div>
                    <h4 className="font-semibold text-white mb-1">Office</h4>
                    <p className="text-gray-400">
-                     123 Innovation Drive<br />
-                     San Francisco, CA 94105
+                     163 NE 24th Street<br />
+                     Miami, FL 33137
                    </p>
                  </div>
                </div>
