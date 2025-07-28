@@ -52,6 +52,24 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        {/* Ensure animations work in static export */}
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            // Ensure Framer Motion works in static export
+            window.addEventListener('load', function() {
+              // Force visibility of animated elements
+              setTimeout(function() {
+                const animatedElements = document.querySelectorAll('[data-framer-motion]');
+                animatedElements.forEach(el => {
+                  if (el.style.opacity === '0') {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                  }
+                });
+              }, 100);
+            });
+          `
+        }} />
       </head>
       <body className={`${inter.className} antialiased bg-dark-950 text-white`}>
         {children}
