@@ -5,15 +5,15 @@ import { motion } from 'framer-motion'
 import { Target, Users, TrendingUp, Shield, Zap, BarChart3 } from 'lucide-react'
 
 const Services = () => {
-  const services = [
-    {
-      title: 'B2B Lead Generation',
+     const services = [
+     {
+       title: 'B2B Lead Generation',
       description: 'High-quality business-to-business leads delivered directly to your CRM with full contact information and qualification criteria.',
       icon: Target,
       color: 'from-blue-600 to-blue-700',
       features: ['Pre-qualified prospects', 'Full contact details', 'Industry targeting', 'Real-time delivery']
-    },
-    {
+     },
+     {
       title: 'Appointment Setting',
       description: 'We schedule qualified meetings with decision-makers who are ready to discuss your products or services.',
       icon: Users,
@@ -28,27 +28,27 @@ const Services = () => {
       features: ['Email sequences', 'Content marketing', 'Social engagement', 'Conversion tracking']
     },
     {
-      title: 'Lead Verification',
+       title: 'Lead Verification',
       description: 'Advanced verification systems ensure every lead meets your exact criteria and has genuine interest.',
       icon: Shield,
       color: 'from-red-600 to-red-700',
       features: ['Phone verification', 'Email validation', 'Company verification', 'Interest confirmation']
-    },
-    {
+     },
+     {
       title: 'Performance Tracking',
       description: 'Real-time analytics and reporting to track lead quality, conversion rates, and ROI metrics.',
       icon: BarChart3,
       color: 'from-orange-600 to-orange-700',
       features: ['Conversion tracking', 'ROI reporting', 'Lead scoring', 'Performance dashboards']
-    },
-    {
+     },
+     {
       title: 'Custom Solutions',
       description: 'Tailored lead generation strategies designed specifically for your industry and target market.',
-      icon: Zap,
+       icon: Zap,
       color: 'from-indigo-600 to-indigo-700',
       features: ['Industry expertise', 'Custom targeting', 'Dedicated team', 'Flexible pricing']
     }
-  ]
+   ]
 
   return (
          <section id="services" className="py-20 bg-dark-950">
