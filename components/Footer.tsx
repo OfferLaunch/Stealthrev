@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Linkedin, Twitter, Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react'
+import Image from 'next/image'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -54,15 +55,18 @@ const Footer = () => {
               viewport={{ once: true }}
             >
               <div className="flex items-center mb-6">
-                               <div className="w-8 h-8 bg-gradient-to-br from-primary-600 to-red-600 rounded-lg flex items-center justify-center">
-                 <span className="text-white font-bold text-sm">SR</span>
-               </div>
-                <span className="ml-2 text-xl font-bold">Stealth Rev</span>
+                <Image
+                  src="/images/stealthrev white.png"
+                  alt="Stealth Rev"
+                  width={120}
+                  height={32}
+                  className="h-8 w-auto"
+                />
               </div>
-                             <p className="text-gray-400 mb-6 leading-relaxed">
-                 Leading the future of lead generation with high-quality, verified prospects 
-                 that drive business growth through our performance-based model.
-               </p>
+              <p className="text-gray-400 mb-6 leading-relaxed">
+                Leading the future of lead generation with high-quality, verified prospects 
+                that drive business growth through our performance-based model.
+              </p>
               
               {/* Contact Info */}
               <div className="space-y-3">

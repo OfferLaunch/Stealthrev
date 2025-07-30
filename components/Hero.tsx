@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Play, CheckCircle } from 'lucide-react'
+import Image from 'next/image'
 
 const Hero = () => {
   return (
@@ -16,6 +17,23 @@ const Hero = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
         <div className="text-center">
+          {/* Logo */}
+          <motion.div
+            initial={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="mb-8"
+          >
+            <Image
+              src="/images/stealthrev white.png"
+              alt="Stealth Rev"
+              width={200}
+              height={60}
+              className="mx-auto h-16 w-auto"
+              priority
+            />
+          </motion.div>
+
           {/* Badge */}
           <motion.div
             initial={{ opacity: 1, y: 0 }}
@@ -56,11 +74,11 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
           >
-            <a href="#contact" className="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 flex items-center group">
+            <a href="#contact" className="bg-brand-red hover:bg-red-700 text-brand-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2 flex items-center group">
               Get Started Today
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
-            <button className="bg-dark-950 hover:bg-dark-900 text-white font-semibold py-3 px-8 rounded-lg border border-primary-600 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 flex items-center group">
+            <button className="bg-brand-black hover:bg-gray-900 text-brand-white font-semibold py-3 px-8 rounded-lg border border-brand-red transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2 flex items-center group">
               <Play className="w-5 h-5 mr-2" />
               See How It Works
             </button>

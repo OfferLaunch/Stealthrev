@@ -1,13 +1,6 @@
 import React from 'react'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
-
-const inter = Inter({ 
-  subsets: ['latin'],
-  display: 'swap',
-  preload: true,
-})
 
 export const metadata: Metadata = {
   title: 'Stealth Rev - Premium Pay Per Lead Solutions',
@@ -71,7 +64,7 @@ export default function RootLayout({
           `
         }} />
       </head>
-      <body className={`${inter.className} antialiased bg-dark-950 text-white`}>
+      <body className="antialiased bg-brand-black text-brand-white">
         {children}
       </body>
     </html>

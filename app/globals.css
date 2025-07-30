@@ -2,7 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+/* Aeonik Font Face Declarations - Using TTF files */
+@font-face {
+  font-family: 'Aeonik';
+  src: url('/fonts/fonnts.com-Aeonik-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aeonik';
+  src: url('/fonts/fonnts.com-Aeonik-Bold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aeonik';
+  src: url('/fonts/fonnts.com-Aeonik-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fallback font import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
   html {
@@ -10,9 +36,9 @@
   }
   
   body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background-color: #020617;
-    color: white;
+    font-family: 'Aeonik', 'Inter', system-ui, sans-serif;
+    background-color: #000000;
+    color: #F2F2F2;
     margin: 0;
     padding: 0;
     line-height: 1.6;
@@ -25,23 +51,23 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply bg-brand-red hover:bg-red-700 text-brand-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2;
   }
   
   .btn-secondary {
-    @apply bg-dark-950 hover:bg-dark-900 text-white font-semibold py-3 px-6 rounded-lg border border-primary-600 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply bg-brand-black hover:bg-gray-900 text-brand-white font-semibold py-3 px-6 rounded-lg border border-brand-red transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2;
   }
   
   .card {
-    @apply bg-dark-900 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-dark-800;
+    @apply bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-800;
   }
   
   .gradient-bg {
-    @apply bg-gradient-to-br from-dark-950 via-dark-900 to-dark-800;
+    @apply bg-gradient-to-br from-brand-black via-gray-900 to-gray-800;
   }
   
   .text-gradient {
-    @apply bg-gradient-to-r from-primary-500 to-red-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-brand-red to-red-500 bg-clip-text text-transparent;
   }
 }
 

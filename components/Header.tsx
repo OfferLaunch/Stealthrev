@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
+import Image from 'next/image'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -28,10 +29,14 @@ const Header = () => {
             className="flex-shrink-0"
           >
             <a href="#home" className="flex items-center">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary-600 to-accent-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">SR</span>
-              </div>
-              <span className="ml-2 text-xl font-bold text-white">Stealth Rev</span>
+              <Image
+                src="/images/stealthrev white.png"
+                alt="Stealth Rev"
+                width={120}
+                height={32}
+                className="h-8 w-auto"
+                priority
+              />
             </a>
           </motion.div>
 
