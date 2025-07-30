@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { ArrowLeft, CheckCircle } from 'lucide-react'
 import Link from 'next/link'
 
-const ContactPage = () => {
+const ApplyPage = () => {
   return (
     <main className="min-h-screen bg-brand-black text-brand-white">
       {/* Header */}
@@ -63,8 +63,8 @@ const ContactPage = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
             >
-              Get Started{' '}
-              <span className="text-gradient">Today</span>
+              Apply for{' '}
+              <span className="text-gradient">Leads</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -81,13 +81,13 @@ const ContactPage = () => {
       </section>
 
       {/* Typeform Section */}
-      <section className="py-20 bg-dark-950">
+      <section className="py-12 bg-dark-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Your <span className="text-gradient">Custom Quote</span>
@@ -102,12 +102,12 @@ const ContactPage = () => {
             initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white rounded-xl shadow-2xl overflow-hidden"
+            className="bg-white rounded-xl shadow-2xl overflow-hidden border-4 border-brand-red"
           >
             <div 
               data-tf-live="01K1EFESYN60904FFVQ0J638S8"
               className="w-full"
-              style={{ height: '600px' }}
+              style={{ height: '500px' }}
             ></div>
           </motion.div>
         </div>
@@ -144,4 +144,4 @@ const ContactPage = () => {
   )
 }
 
-export default ContactPage 
+export default ApplyPage 

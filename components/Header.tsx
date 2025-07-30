@@ -90,21 +90,9 @@ const Header = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="hidden md:block"
           >
-            <button 
-              onClick={() => {
-                const tf = (window as any).tf;
-                if (tf) {
-                  tf.createWidget("01K1EFESYN60904FFVQ0J638S8", {
-                    container: document.body,
-                    width: "100%",
-                    height: "100%"
-                  });
-                }
-              }}
-              className="btn-primary"
-            >
+            <a href="/apply" className="btn-primary">
               Get Started
-            </button>
+            </a>
           </motion.div>
 
           {/* Mobile menu button */}
@@ -138,21 +126,9 @@ const Header = () => {
                 </a>
               ))}
               <div className="pt-4">
-                <button 
-                  onClick={() => {
-                    const tf = (window as any).tf;
-                    if (tf) {
-                      tf.createWidget("01K1EFESYN60904FFVQ0J638S8", {
-                        container: document.body,
-                        width: "100%",
-                        height: "100%"
-                      });
-                    }
-                  }}
-                  className="btn-primary w-full text-center block"
-                >
+                <a href="/apply" className="btn-primary w-full text-center block">
                   Get Started
-                </button>
+                </a>
               </div>
             </div>
           </motion.div>
