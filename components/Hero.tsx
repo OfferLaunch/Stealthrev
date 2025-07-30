@@ -26,7 +26,7 @@ const Hero = () => {
           >
             <Image
               src="/images/stealthrev white.png"
-              alt="Stealth Rev"
+              alt="Stealth Rev - Premium Pay Per Lead Solutions Logo"
               width={200}
               height={60}
               className="mx-auto h-16 w-auto"

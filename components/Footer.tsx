@@ -57,7 +57,7 @@ const Footer = () => {
               <div className="flex items-center mb-6">
                 <Image
                   src="/images/stealthrev white.png"
-                  alt="Stealth Rev"
+                  alt="Stealth Rev - Premium Pay Per Lead Solutions Logo"
                   width={120}
                   height={32}
                   className="h-8 w-auto"
