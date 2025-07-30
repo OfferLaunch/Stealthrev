@@ -8,6 +8,14 @@ export const metadata: Metadata = {
   keywords: 'pay per lead, lead generation, verified leads, performance marketing, lead quality, ROI, B2B leads',
   authors: [{ name: 'Stealth Rev' }],
   robots: 'index, follow',
+  icons: {
+    icon: [
+      { url: '/favicons/16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicons/32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    shortcut: '/favicons/32x32.png',
+    apple: '/favicons/32x32.png',
+  },
   openGraph: {
     title: 'Stealth Rev - Premium Pay Per Lead Solutions',
     description: 'High-quality, verified leads delivered on a pay-per-lead basis. Boost your ROI with our performance-based lead generation platform.',
@@ -34,6 +42,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* Favicon */}
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicons/16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicons/32x32.png" />
+        <link rel="shortcut icon" type="image/png" href="/favicons/32x32.png" />
+        <link rel="apple-touch-icon" href="/favicons/32x32.png" />
+        
         {/* Preload critical fonts */}
         <link
           rel="preconnect"
