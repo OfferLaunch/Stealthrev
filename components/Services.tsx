@@ -111,9 +111,21 @@ const Services = () => {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-                     <a href="#contact" className="btn-primary">
-             Get Your Custom Quote
-           </a>
+          <button 
+            onClick={() => {
+              const tf = (window as any).tf;
+              if (tf) {
+                tf.createWidget("01K1EFESYN60904FFVQ0J638S8", {
+                  container: document.body,
+                  width: "100%",
+                  height: "100%"
+                });
+              }
+            }}
+            className="btn-primary"
+          >
+            Get Your Custom Quote
+          </button>
         </motion.div>
       </div>
     </section>

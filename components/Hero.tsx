@@ -74,10 +74,22 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
           >
-            <a href="#contact" className="bg-brand-red hover:bg-red-700 text-brand-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2 flex items-center group">
+            <button 
+              onClick={() => {
+                const tf = (window as any).tf;
+                if (tf) {
+                  tf.createWidget("01K1EFESYN60904FFVQ0J638S8", {
+                    container: document.body,
+                    width: "100%",
+                    height: "100%"
+                  });
+                }
+              }}
+              className="bg-brand-red hover:bg-red-700 text-brand-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2 flex items-center group"
+            >
               Get Started Today
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </button>
             <button className="bg-brand-black hover:bg-gray-900 text-brand-white font-semibold py-3 px-8 rounded-lg border border-brand-red transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2 flex items-center group">
               <Play className="w-5 h-5 mr-2" />
               See How It Works

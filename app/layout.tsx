@@ -134,6 +134,9 @@ export default function RootLayout({
             });
           `
         }} />
+        
+        {/* Typeform Script */}
+        <script src="//embed.typeform.com/next/embed.js" async></script>
       </head>
       <body className="antialiased bg-brand-black text-brand-white">
         {children}
