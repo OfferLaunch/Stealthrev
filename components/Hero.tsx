@@ -52,8 +52,8 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
           >
-            Quality Leads{' '}
-            <span className="text-gradient">Delivered</span>
+            Want unlimited leads sent to you on a{' '}
+            <span className="text-gradient">performance basis?</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -88,8 +88,8 @@ const Hero = () => {
             className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
           >
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-primary-500 mb-2">10K+</div>
-              <div className="text-gray-400">Leads Delivered</div>
+              <div className="text-3xl md:text-4xl font-bold text-primary-500 mb-2">$250M</div>
+              <div className="text-gray-400">in ad spend</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-primary-500 mb-2">95%</div>

@@ -2,26 +2,16 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowLeft, CheckCircle } from 'lucide-react'
+import { CheckCircle } from 'lucide-react'
 import Link from 'next/link'
 
 const ApplyPage = () => {
   return (
     <main className="min-h-screen bg-brand-black text-brand-white">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-dark-950/95 backdrop-blur-md border-b border-dark-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center text-gray-300 hover:text-white transition-colors">
-              <ArrowLeft className="w-5 h-5 mr-2" />
-              Back to Home
-            </Link>
-          </div>
-        </div>
-      </header>
+
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center gradient-bg overflow-hidden pt-16">
+      <section className="relative min-h-[80vh] flex items-center justify-center gradient-bg overflow-hidden pt-16 pb-8">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-900 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float"></div>
@@ -36,13 +26,15 @@ const ApplyPage = () => {
               initial={{ opacity: 1, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-              className="mb-8"
+              className="mb-4"
             >
-              <img
-                src="/images/stealthrev white.png"
-                alt="Stealth Rev - Premium Pay Per Lead Solutions Logo"
-                className="mx-auto h-16 w-auto"
-              />
+              <Link href="/">
+                <img
+                  src="/images/stealthrev white.png"
+                  alt="Stealth Rev - Premium Pay Per Lead Solutions Logo"
+                  className="mx-auto h-10 w-auto cursor-pointer hover:opacity-80 transition-opacity"
+                />
+              </Link>
             </motion.div>
 
             {/* Badge */}
@@ -63,8 +55,8 @@ const ApplyPage = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
             >
-              Apply for{' '}
-              <span className="text-gradient">Leads</span>
+              Want unlimited leads sent to you on a{' '}
+              <span className="text-gradient">performance basis?</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -74,7 +66,7 @@ const ApplyPage = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
             >
-              Fill out the form below to get your custom lead generation quote and start receiving high-quality, verified leads.
+              Get high-quality, verified leads delivered directly to your CRM. Pay only for qualified prospects that match your exact criteria.
             </motion.p>
           </div>
         </div>
@@ -83,19 +75,7 @@ const ApplyPage = () => {
       {/* Typeform Section */}
       <section className="py-12 bg-dark-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 1, y: 0 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Your <span className="text-gradient">Custom Quote</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Tell us about your business and we'll create a personalized lead generation strategy for you.
-            </p>
-          </motion.div>
+
 
           {/* Typeform Embed */}
           <motion.div

@@ -2,45 +2,33 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Shield, Zap, Target, TrendingUp, Users, Lock } from 'lucide-react'
+import { BarChart3, Globe, TrendingUp, DollarSign } from 'lucide-react'
 
 const Features = () => {
   const features = [
     {
-      icon: Shield,
-      title: 'Verified Leads',
-      description: 'Every lead is pre-qualified and verified before delivery to ensure quality.',
-      gradient: 'from-red-500 to-red-600',
+      icon: BarChart3,
+      title: 'Track',
+      description: 'We\'ve profitably spent over $250M on ads over the last few years',
+      gradient: 'from-blue-500 to-blue-600',
     },
     {
-      icon: Zap,
-      title: 'Instant Delivery',
-      description: 'Leads delivered directly to your CRM in real-time with instant notifications.',
-      gradient: 'from-yellow-500 to-orange-500',
-    },
-    {
-      icon: Target,
-      title: 'Targeted Campaigns',
-      description: 'Reach your exact audience with precision targeting and custom criteria.',
-      gradient: 'from-green-500 to-teal-500',
+      icon: Globe,
+      title: 'Omni-Channel',
+      description: 'We run ads on Meta, Google, TikTok, LinkedIn, and any other channel you need',
+      gradient: 'from-green-500 to-green-600',
     },
     {
       icon: TrendingUp,
       title: 'Performance Tracking',
-      description: 'Real-time analytics and conversion tracking to optimize your ROI.',
-      gradient: 'from-purple-500 to-pink-500',
+      description: 'Our proprietary browser side tracking system helps to ensure the quality of our metrics',
+      gradient: 'from-purple-500 to-purple-600',
     },
     {
-      icon: Users,
-      title: 'Quality Guarantee',
-      description: 'Our quality assurance process ensures only qualified prospects reach you.',
-      gradient: 'from-indigo-500 to-purple-500',
-    },
-    {
-      icon: Lock,
-      title: 'No Setup Fees',
-      description: 'Start immediately with zero upfront costs and pay only for results.',
-      gradient: 'from-red-500 to-pink-500',
+      icon: DollarSign,
+      title: 'No Setup Fee',
+      description: 'We only charge for the results that we get',
+      gradient: 'from-red-500 to-red-600',
     },
   ]
 
@@ -55,10 +43,10 @@ const Features = () => {
           className="text-center mb-16 animate-slide-up"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Why Choose <span className="text-gradient">Pay Per Lead</span>
+            We're aligned with you every step of the way:
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Our performance-based model ensures you only pay for qualified leads that meet your exact criteria and conversion standards.
+            Our proven track record and comprehensive approach ensure your success in lead generation.
           </p>
         </motion.div>
 

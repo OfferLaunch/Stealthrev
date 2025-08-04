@@ -2,15 +2,9 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Award, TrendingUp, Users, Globe } from 'lucide-react'
+
 
 const About = () => {
-     const stats = [
-     { icon: Award, value: '8+', label: 'Years Experience' },
-     { icon: TrendingUp, value: '500%', label: 'Average ROI' },
-     { icon: Users, value: '2K+', label: 'Active Clients' },
-     { icon: Globe, value: '25+', label: 'Industries Served' },
-   ]
 
   return (
          <section id="about" className="py-20 bg-dark-900">
@@ -28,34 +22,8 @@ const About = () => {
                <span className="text-gradient">Lead Generation</span>
              </h2>
              <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-               Stealth Rev has revolutionized the pay-per-lead industry with our performance-based model. 
-               We've helped thousands of businesses scale their sales pipelines by delivering 
-               high-quality, verified leads that convert into customers.
+               The traditional marketing agency model is dead. Instead of paying large retainers to agencies that can't get results, our team ONLY gets paid for the leads that we drive.
              </p>
-             <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-               Our advanced targeting and verification systems ensure you only pay for leads 
-               that meet your exact criteria and have genuine interest in your products or services.
-             </p>
-            
-            {/* Stats */}
-            <div className="grid grid-cols-2 gap-6">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 1, y: 0 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="text-center"
-                >
-                                     <div className="w-12 h-12 bg-primary-900/20 rounded-lg flex items-center justify-center mx-auto mb-3">
-                     <stat.icon className="w-6 h-6 text-primary-500" />
-                   </div>
-                   <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
-                   <div className="text-sm text-gray-400">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
 
           {/* Image/Visual */}
